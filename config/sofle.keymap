@@ -170,7 +170,7 @@
                 &bt BT_CLR         &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI &rgb_ug RGB_EFF                         &kp F12 &kp F7 &kp F8 &kp F9 &kp F18     &to BASE
                 &ext_power EP_TOG  &rgb_ug RGB_BRD &rgb_ug RGB_BRI &bt BT_PRV      &bt BT_NXT      &bt BT_CLR                              &kp F11 &kp F4 &kp F5 &kp F6 &kp F19     &kp KP_NUM
                 &bt BT_DISC 0      &bt BT_DISC 1   &bt BT_DISC 2   &bt BT_DISC 3   &bt BT_DISC 4   &bt BT_DISC 5 &rgb_ug RGB_TOG  &to BASE &kp F10 &kp F1 &kp F2 &kp F3 &kp F20     &to GAME
-                                                          &kp LALT &kp LCTRL  &to BASE &kp LSHFT   &kp SPACE                           &kp BSPC  &to BASE &kp RET &mo MOUSE &kp CTRL
+                                                          &kp LALT &kp LCTRL  &to BASE &kp LSHFT   &kp SPACE                           &kp BSPC  &to BASE &kp RET &mo MOUSE &kp LCTRL
             >;
             sensor-bindings = <
                 &inc_dec_kp C_VOL_UP C_VOL_DN 
