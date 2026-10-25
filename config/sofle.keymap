@@ -140,10 +140,10 @@
 
             display-name = "MOUSE";
             bindings = <
- &kp LGUI &trans &trans &trans &trans &to BASE                    &trans &trans &trans &trans &trans &to GAME
- &kp ESC &trans &trans &kp C_MUTE &trans &trans                      &kp DEL &trans &trans &trans &trans &to BASE
- &kp TAB &trans &kp C_PREV &kp C_PP &kp C_NEXT &kp C_VOL_UP      &trans &trans &trans &trans &trans &trans
- &kp LALT &trans &trans &trans &trans &kp C_MUTE &kp C_VOL_DN        &trans &trans &trans &trans &trans &trans &trans
+ &kp LGUI &trans &trans &trans &trans &to BASE                                &trans &trans &trans &trans &trans &to GAME
+ &kp ESC &trans &trans &kp C_MUTE &trans &trans                             &kp DEL &trans &trans &trans &trans &to BASE
+ &kp TAB &trans &kp C_PREV &kp C_PP &kp C_NEXT &kp C_VOL_UP                 &trans &trans &trans &trans &trans &trans
+ &kp LALT &trans &trans &trans &kp C_MUTE &kp C_VOL_DN &kp C_PP  &kp C_MUTE &trans &trans &trans &trans &trans &trans
                &kp LALT &kp LCTRL &kp LSHFT &none &kp SPACE    &kp BSPC &none &kp RET &none &kp LCTRL
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -166,9 +166,9 @@
 
             display-name = "GEXTRAS";
             bindings = <
- &kp LBRC &kp N6 &kp N7 &kp N8 &kp N9 &kp N0                    &trans &trans &trans &trans &trans &trans
- &kp ESC &kp U  &trans &kp I  &kp O &kp P                      &trans &trans &trans &trans &trans &trans
- &kp TAB &trans &trans &trans &kp H &kp J                      &trans &trans &trans &trans &trans &trans
+ &kp LBRC &kp N6 &kp N7 &kp N8 &kp N9 &kp N0                        &trans &trans &trans &trans &trans &trans
+ &kp ESC &kp U  &trans &kp I  &kp O &kp P                          &trans &trans &trans &trans &trans &trans
+ &kp TAB &trans &trans &trans &kp H &kp J                          &trans &trans &trans &trans &trans &trans
  &kp SPACE &kp K &kp L &kp N &kp COMMA &kp DOT &to BASE  &to PLATF  &trans &trans &trans &trans &trans &trans
                &trans &trans &trans &trans &trans        &trans &trans &trans &trans &trans
             >;
@@ -178,11 +178,11 @@
         platf_layer {
             display-name = "PLATFORM";
             bindings = <
- &mt LGUI RBRC &trans &trans &trans &trans &trans                      &trans &trans &trans &trans &trans &trans
+ &mt LGUI RBRC &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans
  &trans &trans &trans &trans &trans &trans                      &trans &trans &trans &trans &trans &trans
  &trans &trans &trans &trans &trans &trans                      &trans &trans &trans &trans &trans &trans
- &kp SPACE &trans &trans &trans &trans &trans &trans        &to BASE  &trans &trans &trans &trans &trans &trans
-               &kp RBRC &kp LGUI &kp LALT &kp LCTRL &kp SPACE        &kp SPACE &kp LSHFT &kp RET &kp BSPC &kp BSLH
+ &kp SPACE &trans &trans &trans &trans &trans &kp C_PP &to BASE &trans &trans &trans &trans &trans &trans
+    &kp RBRC &kp LGUI &kp LALT &kp LCTRL &kp SPACE    &kp SPACE &kp LSHFT &kp RET &kp BSPC &kp BSLH
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
