@@ -37,7 +37,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "AUTOSHIFT_HOLD_TAP";
             #binding-cells = <2>;
-            tapping-term-ms = <150>;
+            tapping-term-ms = <135>;
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
             require-prior-idle-ms = <80>;
@@ -102,23 +102,23 @@
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * | GUI  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  | 	= + |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |CP_WRD|   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  - _ |           
+ * |LCTRL |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  - _ |           
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | TAB  |   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |  ;|: |  ' @ |
  * |------+------+------+------+------+------|PL/USE |    | LOWER |------+------+------+------+------+------|
- * |SHIFT |   Z  |   X  |   C  |   V  |   B  |  MUTE |    |   TOG |   N  |   M  | , <  | .  > | /  ? |  " " |
- * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      | SHIFT|
+ * |LALT  |   Z  |   X  |   C  |   V  |   B  |  MUTE |    |   TOG |   N  |   M  | , <  | .  > | /  ? |  " " |
+ * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      | LCTRL|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | ALT  | CTRL |LOWER |SHIFT | /SPACE  /       \BCKSP \  |RAISE | ENTER| MOUSE| RAISE|
+ *            |LALT  |LCTRL |SHIFT |LOWER | /SPACE  /       \BCKSP \  |RAISE | ENTER| MOUSE| RAISE|
  *            |      |      |      |      |/       /         \      \ |      |      |   TOG|   TOG|
  *            `----------------------------------'           '------''---------------------------'
  */
             bindings = <
-                &kp LGUI  &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                           &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &as EQUAL
-                &caps_word &as Q  &as W    &as E    &as R     &as T                            &as Y  &as U     &as I     &as O    &as P    &as MINUS
+                &kp LGUI  &kp N1 &kp N2   &as N3   &kp N4    &as N5                           &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &as EQUAL
+                &sk LCTRL &as Q  &as W    &as E    &as R     &as T                            &as Y  &as U     &as I     &as O    &as P    &as MINUS
                 &kp TAB   &as A  &as S    &as D    &as F     &as G                            &as H  &as J     &as K     &as L    &as SEMI &as SQT
-                &sk LSHFT &as Z  &as X    &as C    &as V     &as B &mt C_MUTE C_PP &tog LOWER &as N  &as M     &as COMMA &as DOT  &as FSLH &mt RSHFT LS(N2)
-                                &sk LALT &sk LCTRL &sl LOWER &sk LSHFT  &kp SPACE    &kp BSPC  &sl RAISE  &kp RET &tog MOUSE  &tog RAISE
+                &sk LALT &as Z  &as X    &as C    &as V     &as B &mt C_MUTE C_PP &tog LOWER &as N  &as M     &as COMMA &as DOT  &as FSLH &mt RCTRL LS(N2)
+                                &sk LALT &sk LCTRL &sk LSHFT &sl LOWER  &kp SPACE    &kp BSPC  &sl RAISE  &kp RET &tog MOUSE  &tog RAISE
             >;
             sensor-bindings = <
                 &inc_dec_kp C_VOL_UP C_VOL_DN 
@@ -130,28 +130,28 @@
             display-name = "lower";
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * | GUI  | CAPS |   ?  |   %  |  £   |  {   |                    | NUMLK| L.SEL|   £  |R.SEL |   %  |   ?  |
+ * | GUI  | CAPS |   ?  |   %  |  £   |  {   |                    | NUMLK| L.SEL|   £  |R.SEL |   %  | LOWER|
  * |      |      |      |      |   $  |   }  |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | ESC  |   \  |   ^  |  &   |   #  |  [   |                    |DELETE|   7  |  8   |  9   |   *  |   -  |
- * |      |   ~  |      |      |      |   ]  |                    |      | HOME |  Up  | P UP |      |    _ |
+ * | ESC  |   \  |   ^  |  &   |   #  |  [   |                    |DELETE|   7  |  8   |  9   |   *  |  -  _|
+ * |      |   ~  |      |   ?  |      |   ]  |                    |      | HOME |  Up  | P UP |      |   £  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | TAB  | CAPS |  <   |  >   |   *  |  (   |-------.    ,-------|  .   |   4  |  5   |  6   |   +  |  %   |
  * |      | WORD |      |      |      |   )  |PL/USE |    | LOWER |    = | Left |      | Right|      |   ,  |
  * |------+------+------+------+------+------|       |    |   TOG |------+------+------+------+------+------|
- * |SHIFT |   |  |  `   |  !   |   =  |  <   |-------|    |-------|  0   |   1  |  2   |  3   |   /  |  ""  |
- * |      |      |      |      |      |   >  |                    |INSERT| END  | Down |P DOWN|      |RSHIFT|
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | ALT  | CTRL |LOWER |SHIFT | /SPACE  /       \BCKSP \  |      | ENTER| MOUSE|TG    |
- *            |  OSL |  OSL |      |  OSL |/       /         \      \ |      |      |    MO|      |
+ * |LALT  |   |  |  `   |  !   |   =  |  <   |-------|    |-------|  0   |   1  |  2   |  3   |   /  |  ""  |
+ * |      |      |      |      |      |   >  |                    |INSERT| END  | Down |P DOWN|      | LCTRL|
+ * `-----------------------------------------/       /    \      \------------------------------------------'
+ *            | ALT  | CTRL |SHIFT |LOWER | /SPACE  /      \BCKSP \  |      | ENTER|   TO | LOWER|
+ *            |  sk  |  sk  |  sk  |     |/       /         \      \ |      |      | BASE |   TOG|
  *            `----------------------------------'           '------''---------------------------'
  */
             bindings = <
-                &trans  &kp CAPS  &kp QMARK &kp PRCNT &mt DLLR POUND &mt LS(RBKT) LS(LBKT)       &kp KP_NUM &kp LS(LC(LEFT)) &kp POUND &kp LS(LC(RIGHT)) &kp PRCNT &kp QMARK
-                &kp ESC &mt TILDE2 NUBS &kp CARET &kp AMPS &kp NUHS &mt RBKT LBKT                &kp DEL     &kp KP_N7 &kp KP_N8 &kp KP_N9   &kp KP_ASTERISK  &kp KP_MINUS
-                &trans &kp CAPS &kp LT  &kp GT  &kp STAR  &mt RPAR LPAR                        &mt EQUAL DOT &kp KP_N4 &kp KP_N5 &kp KP_N6   &kp KP_PLUS      &mt COMMA PRCNT
-                &trans &kp LS(NUBS) &kp GRAVE &kp EXCL &kp EQUAL &mt GT LT   &trans     &trans  &kp KP_N0    &kp KP_N1 &kp KP_N2 &kp KP_N3   &kp KP_SLASH     &trans
-                                    &trans    &trans      &trans    &trans   &trans        &trans  &trans    &kp RET   &tog MOUSE  &tog LOWER
+                &trans  &kp CAPS  &kp QMARK &kp PRCNT &mt DLLR POUND &mt LS(RBKT) LS(LBKT)       &kp KP_NUM &kp LS(LC(LEFT)) &kp POUND &kp LS(LC(RIGHT)) &kp PRCNT &tog LOWER
+               &kp ESC &mt TILDE2 NUBS &kp CARET &mt AMPS QMARK &kp NUHS &mt RBKT LBKT           &kp DEL     &kp KP_N7 &kp KP_N8 &kp KP_N9   &kp KP_ASTERISK  &mt KP_MINUS POUND
+                &trans &caps_word &kp LT  &kp GT  &kp STAR  &mt RPAR LPAR                      &mt EQUAL DOT &kp KP_N4 &kp KP_N5 &kp KP_N6   &kp KP_PLUS      &mt COMMA PRCNT
+                &trans &kp LS(NUBS) &kp GRAVE &kp EXCL &kp EQUAL &mt GT LT   &trans      &trans  &kp KP_N0   &kp KP_N1 &kp KP_N2 &kp KP_N3   &kp KP_SLASH     &trans
+                                    &trans    &trans      &trans    &trans   &trans        &trans  &trans    &kp RET   &to BASE &tog LOWER
             >;
             sensor-bindings = <
                 &inc_dec_kp C_VOL_UP C_VOL_DN 
@@ -178,9 +178,9 @@
  *            `----------------------------------'           '------''---------------------------'
  */
             bindings = <
-                &trans     &trans      &trans    &trans   &kp LS(LBKT) &kp LS(RBKT)               &kp CAPS &trans            &trans   &trans             &to MOUSE &to ADJUST
-                &kp ESC     &trans      &trans    &trans    &kp LBKT    &kp RBKT                   &kp DEL  &kp LS(LC(LEFT))  &kp UP   &kp LS(LC(RIGHT))  &kp C_MENU &kp F2
-                &trans     &kp NUBS    &kp LT    &kp GT    &kp LPAR    &kp RPAR                   &kp END  &kp LEFT          &kp DOWN &kp RIGHT          &kp PG_UP  &kp F2
+                &trans     &trans      &trans    &trans   &kp LS(LBKT) &kp LS(RBKT)               &kp CAPS &trans            &trans   &trans             &to MOUSE  &to ADJUST
+                &kp ESC     &trans      &trans    &trans    &kp LBKT    &kp RBKT                  &kp DEL  &kp LS(LC(LEFT))  &kp UP   &kp LS(LC(RIGHT)) &kp C_MENU  &kp F2
+                &trans     &kp NUBS    &kp LT    &kp GT    &kp LPAR    &kp RPAR                   &kp END  &kp LEFT          &kp DOWN &kp RIGHT          &kp PG_UP  &kp POUND
                 &trans     &kp LC(Z)   &kp LC(X) &kp LC(C) &kp LC(V)   &kp LC(A) &trans    &none  &kp HOME &kp C_MENU        &trans   &trans             &kp PG_DN  &trans
                                          &trans       &trans       &trans       &trans            &trans  &trans  &trans    &trans    &mo MOUSE   &trans
             >;
@@ -203,7 +203,7 @@
  * |------+------+------+------+------+------|ON/OFF |    |       |------+------+------+------+------+------|
  * |BDIS 0|BDIS 1|BDIS 2|BDIS 3|BDIS 4|BDIS 5|-------|    |-------| F10  |  F1  |  F2  |  F3  |	 F20 | GAME |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | ALT  | CTRL |LOWER |SHIFT | /SPACE  /       \BCKSP \  |      | ENTER| MOUSE| CTRL |
+ *            | ALT  | CTRL |SHIFT |LOWER | /SPACE  /       \BCKSP \  |      | ENTER| MOUSE| CTRL |
  *            |      |      |      |      |/       /         \      \ |      |      |    MO|      |
  *            `----------------------------------'           '------''---------------------------'
  */
@@ -215,11 +215,11 @@
                 //                    |         |         |         |         |         | |      |      |      |       |      |
             display-name = "adjust";
             bindings = <
-                &bt BT_SEL 0       &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3    &bt BT_SEL 4    &bt BT_SEL 5                           &kp F13 &kp F14 &kp F15 &kp F16 &kp F17  &to GAME
-                &bt BT_CLR         &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI &rgb_ug RGB_EFF                         &kp F12 &kp F7 &kp F8 &kp F9 &kp F18     &to BASE
-                &ext_power EP_TOG  &rgb_ug RGB_BRD &rgb_ug RGB_BRI &bt BT_PRV      &bt BT_NXT      &bt BT_CLR                              &kp F11 &kp F4 &kp F5 &kp F6 &kp F19     &kp KP_NUM
-                &bt BT_DISC 0      &bt BT_DISC 1   &bt BT_DISC 2   &bt BT_DISC 3   &bt BT_DISC 4   &bt BT_DISC 5 &rgb_ug RGB_TOG  &to BASE &kp F10 &kp F1 &kp F2 &kp F3 &kp F20     &to GAME
-                                                          &kp LALT &kp LCTRL  &to BASE &kp LSHFT   &kp SPACE                           &kp BSPC  &to BASE &kp RET &mo MOUSE &kp LCTRL
+              &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3   &bt BT_SEL 4  &bt BT_SEL 5                               &kp F13 &kp F14 &kp F15 &kp F16 &kp F17  &to GAME
+              &bt BT_CLR    &none         &none         &bt BT_PRV     &bt BT_NXT    &bt BT_CLR                                 &kp F12 &kp F7 &kp F8 &kp F9 &kp F18     &to BASE
+             &ext_power EP_TOG &none      &sk LGUI      &sk LALT       &sk LCTRL     &none                                      &kp F11 &kp F4 &kp F5 &kp F6 &kp F19     &kp KP_NUM
+              &bt BT_DISC 0 &bt BT_DISC 1 &bt BT_DISC 2 &bt BT_DISC 3 &bt BT_DISC 4 &bt BT_DISC 5 &rgb_ug RGB_TOG      &to BASE &kp F10 &kp F1 &kp F2 &kp F3 &kp F20     &to GAME
+                                                          &kp LALT &kp LCTRL  &kp LSHFT &to BASE  &kp SPACE                   &kp BSPC  &to BASE &kp RET &mo MOUSE &kp LCTRL
             >;
             sensor-bindings = <
                 &inc_dec_kp C_VOL_UP C_VOL_DN 
