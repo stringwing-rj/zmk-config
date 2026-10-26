@@ -179,7 +179,7 @@
  *            `----------------------------------'           '------''---------------------------'
  */
             bindings = <
-                &trans     &trans      &trans    &trans   &kp LS(LBKT) &kp LS(RBKT)               &kp CAPS &mt C_RW C_PREV  &mt MUTE C_PP &mt C_FF C_NEXT    &to MOUSE   &to ADJUST
+                &trans     &trans      &trans    &trans   &kp LS(LBKT) &kp LS(RBKT)               &kp CAPS &mt C_RW C_PREV  &mt C_MUTE C_PP &mt C_FF C_NEXT    &to MOUSE   &to ADJUST
                 &kp ESC     &trans      &trans    &trans    &kp LBKT    &kp RBKT                  &kp DEL  &kp LS(LC(LEFT)) &kp UP        &kp LS(LC(RIGHT))  &kp C_MENU  &kp F2
                 &trans     &kp NUBS    &kp LT    &kp GT    &kp LPAR    &kp RPAR                   &kp END  &kp LEFT         &kp DOWN      &kp RIGHT          &kp PG_UP   &kp POUND
                 &trans     &kp LC(Z)   &kp LC(X) &kp LC(C) &kp LC(V)   &kp LC(A) &trans    &none  &kp HOME &kp C_MENU       &trans        &trans             &kp PG_DN   &trans
