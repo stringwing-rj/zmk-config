@@ -243,7 +243,7 @@
             bindings = <
  &kp LGUI &bt BT_DISC 0 &bt BT_PRV &bt BT_SEL 0 &bt BT_NXT &bt BT_CLR                   &trans  &trans &trans &trans &trans     &to GAME
  &kp ESC  &trans &trans &sk LC(LALT) &sk LS(LALT) &trans                             &kp DEL &trans &trans &trans &trans    &to BASE
- &kp TAB  &LGUI  &sk LSHFT &sk LALT &sk LCTRL &sk LSHFT                                 &trans  &trans &trans &trans &trans     &tog MOUSE
+ &kp TAB  &sk LGUI  &sk LSHFT &sk LALT &sk LCTRL &sk LSHFT                                 &trans  &trans &trans &trans &trans     &tog MOUSE
  &kp LALT &trans &trans    &trans   &trans    &trans  &rgb_ug RGB_TOG &ext_power EP_TOG &trans  &trans &trans &trans &trans   &kp RET
                &kp LALT &kp LCTRL &kp LSHFT &none &kp SPACE                      &kp BSPC &none &kp RET &trans &tog MOUSE
             >;
