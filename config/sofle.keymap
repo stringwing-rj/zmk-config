@@ -115,7 +115,7 @@
  */
             bindings = <
                 &kp LGUI  &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                           &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &as EQUAL
-                &capsword &as Q  &as W    &as E    &as R     &as T                            &as Y  &as U     &as I     &as O    &as P    &as MINUS
+                &caps_word &as Q  &as W    &as E    &as R     &as T                            &as Y  &as U     &as I     &as O    &as P    &as MINUS
                 &kp TAB   &as A  &as S    &as D    &as F     &as G                            &as H  &as J     &as K     &as L    &as SEMI &as SQT
                 &sk LSHFT &as Z  &as X    &as C    &as V     &as B &mt C_MUTE C_PP &tog LOWER &as N  &as M     &as COMMA &as DOT  &as FSLH &mt RSHFT LS(N2)
                                 &sk LALT &sk LCTRL &sl LOWER &sk LSHFT  &kp SPACE    &kp BSPC  &sl RAISE  &kp RET &tog MOUSE  &tog RAISE
