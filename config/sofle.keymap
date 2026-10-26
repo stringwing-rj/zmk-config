@@ -208,7 +208,7 @@
  */
             display-name = "adjust";
             bindings = <
-              &trans &trans &trans &trans   &kp LS(LBRKT) &kp LS(RBKT)                            &kp F13 &kp F14 &kp F15 &kp F16 &kp F17  &to GAME
+              &trans &trans &trans &trans   &kp LS(LBKT) &kp LS(RBKT)                            &kp F13 &kp F14 &kp F15 &kp F16 &kp F17  &to GAME
               &trans &none  &none  &mt TILDE2 NUBS &kp LBKT &kp RBKT                              &kp F12 &kp F7 &kp F8 &kp F9 &kp F18     &to BASE
               &trans &none  &kp LT &kp GT   &kp LPAR  &kp RPAR                                    &kp F11 &kp F4 &kp F5 &kp F6 &kp F19     &kp KP_NUM
               &trans &trans &trans &kp TILDE2 &kp LT  &kp GT     &trans                  &to BASE &kp F10 &kp F1 &kp F2 &kp F3 &kp F20     &to GAME
