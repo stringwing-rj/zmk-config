@@ -28,7 +28,7 @@
     cs-gpios = <&pro_micro 4 GPIO_ACTIVE_HIGH>;
 };
 
-/ {
+
 
 / {
     // 1. BEHAVIORS BLOCK
