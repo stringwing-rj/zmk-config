@@ -148,7 +148,7 @@
  */
             bindings = <
                 &trans  &kp CAPS  &kp QMARK &kp PRCNT &mt DLLR POUND &mt LS(RBKT) LS(LBKT)       &kp KP_NUM &kp LS(LC(LEFT)) &kp POUND &kp LS(LC(RIGHT)) &kp PRCNT &tog LOWER
-               &kp ESC &mt TILDE2 NUBS &kp CARET &mt AMPS QMARK &kp NUHS &mt RBKT LBKT           &kp DEL     &kp KP_N7 &kp KP_N8 &kp KP_N9   &kp KP_ASTERISK  &mt KP_MINUS POUND
+               &kp ESC &mt TILDE2 NUBS &kp CARET &mt AMPS QMARK &kp NUHS &mt RBKT LBKT           &kp DEL     &kp KP_N7 &kp KP_N8 &kp KP_N9   &kp KP_ASTERISK  &mt POUND KP_MINUS
                 &trans &caps_word &kp LT  &kp GT  &kp STAR  &mt RPAR LPAR                      &mt EQUAL DOT &kp KP_N4 &kp KP_N5 &kp KP_N6   &kp KP_PLUS      &mt COMMA PRCNT
                 &trans &kp LS(NUBS) &kp GRAVE &kp EXCL &kp EQUAL &mt GT LT   &trans      &trans  &kp KP_N0   &kp KP_N1 &kp KP_N2 &kp KP_N3   &kp KP_SLASH     &trans
                                     &trans    &trans      &trans    &trans   &trans        &trans  &trans    &kp RET   &to BASE &tog LOWER
