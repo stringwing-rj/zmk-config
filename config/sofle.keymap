@@ -29,6 +29,56 @@
 };
 
 / {
+
+/ {
+    // 1. BEHAVIORS BLOCK
+    behaviors {
+        as_ht: autoshift_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "AUTOSHIFT_HOLD_TAP";
+            #binding-cells = <2>;
+            tapping-term-ms = <170>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            require-prior-idle-ms = <80>;
+            bindings = <&shifted>, <&kp>;
+        };
+    };
+
+    // 2. MACROS BLOCK
+    macros {
+        shifted: macro_shifted_kp {
+            #binding-cells = <1>;
+            label = "MACRO_SHIFTED_KP";
+            compatible = "zmk,behavior-macro-one-param";
+            bindings =
+                <&macro_press>,
+                <&kp LSHFT &macro_param_1to1>,
+                <&macro_tap>,
+                <&kp MACRO_PLACEHOLDER>,
+                <&macro_release>,
+                <&kp LSHFT>;
+        };
+
+        as: autoshift {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            label = "AUTOSHIFT_KP";
+            bindings =
+                <&macro_press>,
+                <&macro_param_1to1 &macro_param_1to2 &as_ht MACRO_PLACEHOLDER MACRO_PLACEHOLDER>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&macro_param_1to1 &macro_param_1to2 &as_ht MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
+        };
+    };
+
+    // Your existing keymap code continues below...
+
+
+
+
+
    // The conditional_layers block has been safely isolated and commented out here
    /*
     conditional_layers {
@@ -52,23 +102,22 @@
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * | GUI  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  | 	= + |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | ESC  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  -   |
- * |LCTRL |      |      |      |      |      |                    |      |      |      |      |      |   _  |                
+ * |CP_WRD|   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  - _ |           
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | TAB  |   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |  ;|: |  ' @ |
  * |------+------+------+------+------+------|PL/USE |    | LOWER |------+------+------+------+------+------|
- * |SHIFT |   Z  |   X  |   C  |   V  |   B  |  MUTE |    |   TOG |   N  |   M  |  ,   |  .   |  /   |  " " |
- * |      |      |      |      |      |      |-------|    |-------|      |      |   <  |   >  |   ?  | SHIFT|
+ * |SHIFT |   Z  |   X  |   C  |   V  |   B  |  MUTE |    |   TOG |   N  |   M  | , <  | .  > | /  ? |  " " |
+ * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      | SHIFT|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            | ALT  | CTRL |LOWER |SHIFT | /SPACE  /       \BCKSP \  |RAISE | ENTER| MOUSE| RAISE|
  *            |      |      |      |      |/       /         \      \ |      |      |   TOG|   TOG|
  *            `----------------------------------'           '------''---------------------------'
  */
             bindings = <
-                &kp LGUI  &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                           &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &kp EQUAL
-            &mt LCTRL ESC &kp Q  &kp W    &kp E    &kp R     &kp T                            &kp Y  &kp U     &kp I     &kp O    &kp P    &kp MINUS
-                &kp TAB   &kp A  &kp S    &kp D    &kp F     &kp G                            &kp H  &kp J     &kp K     &kp L    &kp SEMI &kp SQT
-                &sk LSHFT &kp Z  &kp X    &kp C    &kp V     &kp B &mt C_MUTE C_PP &tog LOWER &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &mt RSHFT LS(N2)
+                &kp LGUI  &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                           &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &as EQUAL
+                &capsword &as Q  &as W    &as E    &as R     &as T                            &as Y  &as U     &as I     &as O    &as P    &as MINUS
+                &kp TAB   &as A  &as S    &as D    &as F     &as G                            &as H  &as J     &as K     &as L    &as SEMI &as SQT
+                &sk LSHFT &as Z  &as X    &as C    &as V     &as B &mt C_MUTE C_PP &tog LOWER &as N  &as M     &as COMMA &as DOT  &as FSLH &mt RSHFT LS(N2)
                                 &sk LALT &sk LCTRL &sl LOWER &sk LSHFT  &kp SPACE    &kp BSPC  &sl RAISE  &kp RET &tog MOUSE  &tog RAISE
             >;
             sensor-bindings = <
@@ -85,10 +134,10 @@
  * |      |      |      |      |   $  |   }  |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | ESC  |   \  |   ^  |  &   |   #  |  [   |                    |DELETE|   7  |  8   |  9   |   *  |   -  |
- * | LCTRL|   ~  |      |      |      |   ]  |                    |      | HOME |  Up  | P UP |      |    _ |
+ * |      |   ~  |      |      |      |   ]  |                    |      | HOME |  Up  | P UP |      |    _ |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | TAB  | CAPS |  <   |  >   |   *  |  (   |-------.    ,-------|   .  |   4  |  5   |  6   |   +  |  %   |
- * |      | WORD |      |      |      |   )  |PL/USE |    | LOWER |   =  | Left |      | Right|      |   ,  |
+ * | TAB  | CAPS |  <   |  >   |   *  |  (   |-------.    ,-------|  .   |   4  |  5   |  6   |   +  |  %   |
+ * |      | WORD |      |      |      |   )  |PL/USE |    | LOWER |    = | Left |      | Right|      |   ,  |
  * |------+------+------+------+------+------|       |    |   TOG |------+------+------+------+------+------|
  * |SHIFT |   |  |  `   |  !   |   =  |  <   |-------|    |-------|  0   |   1  |  2   |  3   |   /  |  ""  |
  * |      |      |      |      |      |   >  |                    |INSERT| END  | Down |P DOWN|      |RSHIFT|
@@ -98,10 +147,10 @@
  *            `----------------------------------'           '------''---------------------------'
  */
             bindings = <
-                &trans  &kp CAPS  &kp QMARK &kp PRCNT &mt POUND DLLR &mt LS(RBKT) LS(LBKT)       &kp KP_NUM &kp LS(LC(LEFT)) &kp POUND &kp LS(LC(RIGHT)) &kp PRCNT &kp QMARK
-                &trans  &mt TILDE2 NUBS &kp CARET &kp AMPS &kp NUHS &mt RBKT LBKT                &kp DEL      &kp KP_N7 &kp KP_N8 &kp KP_N9   &kp KP_ASTERISK  &kp KP_MINUS
-                &trans &caps_word &kp LT   &kp GT  &kp STAR  &mt RPAR LPAR                      &mt EQUAL DOT &kp KP_N4 &kp KP_N5 &kp KP_N6   &kp KP_PLUS      &mt COMMA PRCNT
-                &trans  &kp LS(NUBS) &kp GRAVE &kp EXCL &kp EQUAL  &mt GT LT   &trans    &trans  &kp KP_N0    &kp KP_N1 &kp KP_N2 &kp KP_N3   &kp KP_SLASH     &trans
+                &trans  &kp CAPS  &kp QMARK &kp PRCNT &mt DLLR POUND &mt LS(RBKT) LS(LBKT)       &kp KP_NUM &kp LS(LC(LEFT)) &kp POUND &kp LS(LC(RIGHT)) &kp PRCNT &kp QMARK
+                &kp ESC &mt TILDE2 NUBS &kp CARET &kp AMPS &kp NUHS &mt RBKT LBKT                &kp DEL     &kp KP_N7 &kp KP_N8 &kp KP_N9   &kp KP_ASTERISK  &kp KP_MINUS
+                &trans &kp CAPS &kp LT  &kp GT  &kp STAR  &mt RPAR LPAR                        &mt EQUAL DOT &kp KP_N4 &kp KP_N5 &kp KP_N6   &kp KP_PLUS      &mt COMMA PRCNT
+                &trans &kp LS(NUBS) &kp GRAVE &kp EXCL &kp EQUAL &mt GT LT   &trans     &trans  &kp KP_N0    &kp KP_N1 &kp KP_N2 &kp KP_N3   &kp KP_SLASH     &trans
                                     &trans    &trans      &trans    &trans   &trans        &trans  &trans    &kp RET   &tog MOUSE  &tog LOWER
             >;
             sensor-bindings = <
@@ -130,7 +179,7 @@
  */
             bindings = <
                 &trans     &trans      &trans    &trans   &kp LS(LBKT) &kp LS(RBKT)               &kp CAPS &trans            &trans   &trans             &to MOUSE &to ADJUST
-                &trans     &trans      &trans    &trans    &kp LBKT    &kp RBKT                   &kp DEL  &kp LS(LC(LEFT))  &kp UP   &kp LS(LC(RIGHT))  &kp C_MENU &kp F2
+                &kp ESC     &trans      &trans    &trans    &kp LBKT    &kp RBKT                   &kp DEL  &kp LS(LC(LEFT))  &kp UP   &kp LS(LC(RIGHT))  &kp C_MENU &kp F2
                 &trans     &kp NUBS    &kp LT    &kp GT    &kp LPAR    &kp RPAR                   &kp END  &kp LEFT          &kp DOWN &kp RIGHT          &kp PG_UP  &kp F2
                 &trans     &kp LC(Z)   &kp LC(X) &kp LC(C) &kp LC(V)   &kp LC(A) &trans    &none  &kp HOME &kp C_MENU        &trans   &trans             &kp PG_DN  &trans
                                          &trans       &trans       &trans       &trans            &trans  &trans  &trans    &trans    &mo MOUSE   &trans
