@@ -51,23 +51,23 @@
 
 
         
-/*
-        *// Standard hold-tap behavior engineered to support layer parameters
-        *// This natively satisfies Zephyr's binding verification engine
-       * layer_ht: layer_hold_tap {
-      *      compatible = "zmk,behavior-hold-tap";
-     *       #binding-cells = <2>;
-    *        tapping-term-ms = <200>;
+
+         // Standard hold-tap behavior engineered to support layer parameters
+         // This natively satisfies Zephyr's binding verification engine
+  /*     layer_ht: layer_hold_tap {
+   *         compatible = "zmk,behavior-hold-tap";
+   *         #binding-cells = <2>;
+   *         tapping-term-ms = <200>;
    *         flavor = "hold-preferred";
-  *          bindings = <&mo>, <&sl>; // Hold = Momentary Layer, Tap = Sticky Layer
- *       };
-*
-       * // Clean, zero-parameter Tap-Dance nodes mapping straight to the helper driver
-      *  td_lower: lower_tap_toggle {
-     *       compatible = "zmk,behavior-tap-dance";
+   *         bindings = <&mo>, <&sl>; // Hold = Momentary Layer, Tap = Sticky Layer
+   *      };
+   */
+         // Clean, zero-parameter Tap-Dance nodes mapping straight to the helper driver
+   /*    td_lower: lower_tap_toggle {
+    *        compatible = "zmk,behavior-tap-dance";
     *        #binding-cells = <0>;
-    *         tapping-term-ms = <200>;
-    *          bindings = <&layer_ht LOWER LOWER>, <&tog LOWER>;
+    *        tapping-term-ms = <200>;
+    *        bindings = <&layer_ht LOWER LOWER>, <&tog LOWER>;
     *       };
     *
     *  td_raise: raise_tap_toggle {
