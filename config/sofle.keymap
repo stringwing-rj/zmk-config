@@ -155,7 +155,7 @@
  *            `-----------------------------------'          '-------''---------------------------'
  */
             bindings = <
-                &sk LGUI  &kp N1 &kp N2   &as N3   &kp N4    &as N5                              &kp N6 &kp N7 &kp N8    &kp N9   &kp N0   &kp EQUAL
+                &sk LGUI  &kp N1 &as N2   &as N3   &kp N4    &as N5                              &kp N6 &kp N7 &kp N8    &kp N9   &kp N0   &kp EQUAL
                 &sk LALT  &kp Q  &kp W    &kp E    &kp R     &kp T                               &kp Y  &kp U  &kp I     &kp O    &kp P    &as MINUS
                 &kp TAB   &kp A  &kp S    &kp D    &kp F     &kp G                               &kp H  &kp J  &kp K     &kp L    &as SEMI &kp BSPC
                 &sk LCTRL &kp Z  &kp X    &kp C    &kp V     &kp B &mt C_MUTE C_PP    &tog MOUSE &kp N  &kp M  &kp COMMA &kp DOT  &as FSLH &kp RET
@@ -178,7 +178,7 @@
  * |      |      |      |   ?  |      |   ]  |                    |      | HOME |  Up  | P UP |      |   £  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | TAB  | CAPS |  <   |  >   |   *  |  (   |-------.    ,-------|  .   |   4  |  5   |  6   |   "  | BKSPC|
- * |      | WORD |   >  |      |      |   )  |PL/USE |    | LOWER |    = | Left |      | Right|      |      |
+ * |      | WORD |   >  |      |      |   )  |PL/USE |    | LOWER |    = | Left |      | Right| MACRO|      |
  * |------+------+------+------+------+------|       |    |   TOG |------+------+------+------+------+------|
  * |LCTR  |   |  |  `   |  !   |   =  |  <"  |-------|    |-------|  0   |   1  |  2   |  3   |  /   | ENTER|
  * |      |      |      |      |      |   >" |                    |INSERT| END  | Down |P DOWN|   *  |      |
@@ -251,7 +251,7 @@
             bindings = <
               &trans &trans &trans &trans   &kp LS(LBKT) &kp LS(RBKT)                             &kp F13 &kp F14 &kp F15 &kp F16 &kp F17  &to GAME
               &trans &none  &none  &mt TILDE2 NUBS &kp LBKT &kp RBKT                              &kp F12 &kp F7 &kp F8 &kp F9 &kp F18     &to BASE
-            &trans &kp LS(N2) &kp LT &kp GT   &kp LPAR  &kp RPAR                                  &kp F11 &kp F4 &kp F5 &kp F6 &kp F19     &to GAME
+            &trans &kp LS(N2) &kp LT &kp GT   &kp LPAR  &kp RPAR                                  &kp F11 &kp F4 &kp F5 &kp F6 &kp F19     &trans
               &trans &trans &trans &kp TILDE2 &kp LT  &kp GT     &trans                  &to BASE &kp F10 &kp F1 &kp F2 &kp F3 &kp F20     &kp LS(N2)
                          &trans &trans  &trans &trans  &trans                      &trans  &trans &trans &none &to BASE
             >;
