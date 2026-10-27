@@ -50,51 +50,38 @@
 
 
 
-        // 1. Individual Sticky Layer Instances (0-parameter wrappers)
-        sl_lower: sl_lower_lock {
-            compatible = "zmk,behavior-sticky-layer";
-            #binding-cells = <0>;
-            bindings = <LOWER>;
-            release-after-ms = <1000>;
-            locking; 
+        
+
+        // Standard hold-tap behavior engineered to support layer parameters
+        // This natively satisfies Zephyr's binding verification engine
+        layer_ht: layer_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "hold-preferred";
+            bindings = <&mo>, <&sl>; // Hold = Momentary Layer, Tap = Sticky Layer
         };
 
-        sl_raise: sl_raise_lock {
-            compatible = "zmk,behavior-sticky-layer";
-            #binding-cells = <0>;
-            bindings = <RAISE>;
-            release-after-ms = <1000>;
-            locking; 
-        };
-
-        sl_mouse: sl_mouse_lock {
-            compatible = "zmk,behavior-sticky-layer";
-            #binding-cells = <0>;
-            bindings = <MOUSE>;
-            release-after-ms = <1000>;
-            locking; 
-        };
-
-        // 2. Tap-Dance Drivers feeding directly into the global &tog macro
+        // Clean, zero-parameter Tap-Dance nodes mapping straight to the helper driver
         td_lower: lower_tap_toggle {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&sl_lower>, <&tog LOWER>;
+            bindings = <&layer_ht LOWER LOWER>, <&tog LOWER>;
         };
 
         td_raise: raise_tap_toggle {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&sl_raise>, <&tog RAISE>;
+            bindings = <&layer_ht RAISE RAISE>, <&tog RAISE>;
         };
 
         td_mouse: mouse_tap_toggle {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&sl_mouse>, <&tog MOUSE>;
+            bindings = <&layer_ht MOUSE MOUSE>, <&tog MOUSE>;
         };
     };
 
