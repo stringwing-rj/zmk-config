@@ -43,6 +43,44 @@
             require-prior-idle-ms = <80>;
             bindings = <&shifted>, <&kp>;
         };
+
+
+    // add here
+
+
+
+        // Custom sticky layer behavior that implements locking
+        sl_lock: sticky_layer_lock {
+            compatible = "zmk,behavior-sticky-layer";
+            #binding-cells = <1>;
+            release-after-ms = <1000>;
+            locking; // Crucial for chaining & PR #2717 layer persistence
+        };
+
+        // Tap-Dance drivers mimicking QMK OSL Tap-Toggle functionality
+        td_lower: lower_tap_toggle {
+            compatible = "zmk,behavior-tap-dance";
+            label = "LOWER_TAP_TOGGLE";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&sl_lock LOWER>, <&tog LOWER>;
+        };
+
+        td_raise: raise_tap_toggle {
+            compatible = "zmk,behavior-tap-dance";
+            label = "RAISE_TAP_TOGGLE";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&sl_lock RAISE>, <&tog RAISE>;
+        };
+
+        td_mouse: mouse_tap_toggle {
+            compatible = "zmk,behavior-tap-dance";
+            label = "MOUSE_TAP_TOGGLE";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&sl_lock MOUSE>, <&tog MOUSE>;
+        };
     };
 
     // 2. MACROS BLOCK
@@ -117,7 +155,7 @@
                 &sk LALT  &kp Q  &kp W    &kp E    &kp R     &kp T                               &kp Y  &kp U  &kp I     &kp O    &kp P    &as MINUS
                 &kp TAB   &kp A  &kp S    &kp D    &kp F     &kp G                               &kp H  &kp J  &kp K     &kp L    &as SEMI &kp SQT
                 &sk LCTRL &kp Z  &kp X    &kp C    &kp V     &kp B &mt C_MUTE C_PP    &tog MOUSE &kp N  &kp M  &kp COMMA &kp DOT  &as FSLH &kp RET
-                                &sk LALT &sk LCTRL &sk LSHFT &sl LOWER  &kp SPACE        &kp BSPC  &sl RAISE  &sk LSHFT   &tog LOWER &tog RAISE
+                                &sk LALT &sk LCTRL &sk LSHFT &td_lower  &kp SPACE        &kp BSPC  &td_raise  &sk LSHFT   &td_mouse &tog RAISE
             >;
             sensor-bindings = <
                 &inc_dec_kp C_VOL_UP C_VOL_DN 
@@ -242,7 +280,7 @@
  &kp ESC  &trans &trans &sk LC(LALT) &sk LS(LALT) &trans                             &kp DEL &trans &trans &trans &trans    &to BASE
  &kp TAB  &sk LGUI  &sk LSHFT &sk LALT &sk LCTRL &sk LSHFT                                 &trans  &trans &trans &trans &trans     &tog MOUSE
  &kp LALT &trans &trans    &trans   &trans    &trans  &rgb_ug RGB_TOG &ext_power EP_TOG &trans  &trans &trans &trans &trans   &kp RET
-               &kp LALT &kp LCTRL &kp LSHFT &none &kp SPACE                      &kp BSPC &none &kp RET &trans &tog MOUSE
+               &kp LALT &kp LCTRL &kp LSHFT &none &kp SPACE                      &kp BSPC &none &sk LSHFT &trans &tog MOUSE
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
