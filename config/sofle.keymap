@@ -49,39 +49,76 @@
 
 
 
-        // Custom sticky layer behavior that implements locking
-        sl_lock: sticky_layer_lock {
+        
+
+        // 1. Individual Sticky Layer Instances (0-parameter wrappers)
+        sl_lower: sl_lower_lock {
             compatible = "zmk,behavior-sticky-layer";
-            #binding-cells = <1>;
+            #binding-cells = <0>;
+            bindings = <LOWER>;
             release-after-ms = <1000>;
-            locking; // Crucial for chaining & PR #2717 layer persistence
+            locking; 
         };
 
-        // Tap-Dance drivers mimicking QMK OSL Tap-Toggle functionality
+        sl_raise: sl_raise_lock {
+            compatible = "zmk,behavior-sticky-layer";
+            #binding-cells = <0>;
+            bindings = <RAISE>;
+            release-after-ms = <1000>;
+            locking; 
+        };
+
+        sl_mouse: sl_mouse_lock {
+            compatible = "zmk,behavior-sticky-layer";
+            #binding-cells = <0>;
+            bindings = <MOUSE>;
+            release-after-ms = <1000>;
+            locking; 
+        };
+
+        // 2. Individual Toggle Instances (0-parameter wrappers)
+        tog_lower: tog_lower_layer {
+            compatible = "zmk,behavior-toggle-layer";
+            #binding-cells = <0>;
+            bindings = <LOWER>;
+        };
+
+        tog_raise: tog_raise_layer {
+            compatible = "zmk,behavior-toggle-layer";
+            #binding-cells = <0>;
+            bindings = <RAISE>;
+        };
+
+        tog_mouse: tog_mouse_layer {
+            compatible = "zmk,behavior-toggle-layer";
+            #binding-cells = <0>;
+            bindings = <MOUSE>;
+        };
+
+        // 3. Clean Tap-Dance Nodes pointing to the 0-parameter instances above
         td_lower: lower_tap_toggle {
             compatible = "zmk,behavior-tap-dance";
-            label = "LOWER_TAP_TOGGLE";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&sl_lock LOWER>, <&tog LOWER>;
+            bindings = <&sl_lower>, <&tog_lower>;
         };
 
         td_raise: raise_tap_toggle {
             compatible = "zmk,behavior-tap-dance";
-            label = "RAISE_TAP_TOGGLE";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&sl_lock RAISE>, <&tog RAISE>;
+            bindings = <&sl_raise>, <&tog_raise>;
         };
 
         td_mouse: mouse_tap_toggle {
             compatible = "zmk,behavior-tap-dance";
-            label = "MOUSE_TAP_TOGGLE";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&sl_lock MOUSE>, <&tog MOUSE>;
+            bindings = <&sl_mouse>, <&tog_mouse>;
         };
     };
+
+
 
     // 2. MACROS BLOCK
     macros {
