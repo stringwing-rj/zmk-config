@@ -204,7 +204,7 @@
                            &trans    &trans      &trans    &trans   &trans            &trans  &trans    &trans   &trans &tog MOUSE
             >;
             sensor-bindings = <
-                &inc_dec_msc SCRL_UP SCRL_DOWN
+                &inc_dec_kp UP DOWN
                 &inc_dec_kp PG_UP PG_DN
             >;
         };
