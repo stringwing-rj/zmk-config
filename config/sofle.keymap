@@ -250,7 +250,7 @@
  * |      |      |      |   ~  |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | TAB  |  "   |   <  |  >   |   (  |  )   |-------.    ,-------| F11  |  F4  |  F5  |  F6  |  F19 | NUMLK|
- * |------+------+------+------+------+------|PP MUTE|    | MOUSE |------+------+------+------+------+------|
+ * |------+------+------+------+------+------|MIPS OFF|  |MIPS OFF|------+------+------+------+------+------|
  * |      |      |      |   ~  |   <  |  >   |-------|    |-------| F10  |  F1  |  F2  |  F3  |	 F20 |   "  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            | ALT  | CTRL |SHIFT |LOWER | /SPACE  /       \BCKSP \  |      | ENTER| MOUSE| MOUSE|
@@ -260,9 +260,9 @@
             display-name = "adjust";
             bindings = <
             &trans &trans &trans &trans   &kp LS(LBKT) &kp LS(RBKT)                         &kp F13 &kp F14 &kp F15 &kp F16 &kp F17  &to GAME
-            &kp ESC &none  &none  &kp QMARK &kp LBKT &kp RBKT                                &kp F12 &kp F7 &kp F8 &kp F9 &kp F18     &to PLATF
+            &kp ESC &none  &none  &kp QMARK &kp LBKT &kp RBKT                               &kp F12 &kp F7 &kp F8 &kp F9 &kp F18     &to PLATF
             &trans &kp LS(N2) &kp LT &kp GT   &kp LPAR  &kp RPAR                            &kp F11 &kp F4 &kp F5 &kp F6 &kp F19     &to BASE
-            &trans &mt TILDE2 NUBS &trans &kp TILDE2 &kp LT  &kp GT &trans                  &trans &kp F10 &kp F1 &kp F2 &kp F3 &kp F20     &kp LS(N2)
+&trans &mt TILDE2 NUBS &trans &kp TILDE2 &kp LT  &kp GT &rgb_ug RGB_TOG     &rgb_ug RGB_TOG &kp F10 &kp F1 &kp F2 &kp F3 &kp F20     &kp LS(N2)
                          &trans &trans  &trans &trans  &trans                                  &trans  &trans &trans &to MOUSE &to MOUSE
             >;
             sensor-bindings = <
@@ -281,7 +281,7 @@
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | TAB  |      |      |      |      |      |-------.    ,-------|WheelU|M Left|M Down|M Rigt|  M 3 | MOUSE|
  * |      |      |      |      |      |      |                    |      |      |      |      |      |   tog|
- * |------+------+------+------+------+------|PP MUTE|    | MOUSE|------+------+------+------+------+------|
+ * |------+------+------+------+------+------|PP MUTE|    |PLATFRM|------+------+------+------+------+------|
  * | ALT  |      |      |      |      |      |-------|    |-------|WheelD|BR_Bck|B_Fwd |Refrsh|      | ENTER|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            |  ALT | CTRL |SHIFT |      | /SPACE  /       \BCKSP \  |      | SHIFT| MOUSE| MOUSE|
@@ -293,7 +293,7 @@
  &kp LGUI &ext_power EP_TOG &bt BT_PRV &bt BT_SEL 0 &bt BT_NXT &bt BT_CLR        &bt BT_DISC 0  &trans &trans &trans &trans   &to GAME
  &kp ESC  &trans &trans &sk LC(LALT) &sk LS(LALT) &trans                         &kp DEL &trans &trans &trans &trans          &to PLATF
  &kp TAB  &sk LGUI  &sk LALT &sk LCTRL &sk LSHFT &sk LALT                        &trans  &trans &trans &trans &trans          &to BASE
- &kp LALT &trans &trans &trans   &trans &trans  &trans                    &trans &trans  &trans &trans &trans &trans         &kp RET
+ &kp LALT &trans   &trans &trans  &trans &trans &mt C_MUTE C_PP        &to PLATF &trans  &trans &trans &trans &trans         &kp RET
                &kp LALT &kp LCTRL &kp LSHFT &none &kp SPACE                      &kp BSPC &none &sk LSHFT &trans &trans
             >;
             sensor-bindings = <
@@ -310,7 +310,7 @@
  * | ESC  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  - _ |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |  M   |   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  |  '@  |
- * |------+------+------+------+------+------|PP_MUTE|    | M_HREM|------+------+------+------+------+------|
+ * |------+------+------+------+------+------|PP_MUTE|    |PLATFRM|------+------+------+------+------+------|
  * |SPACE |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  | ENTER|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            |   /  | Alt  | CTRL | RAISE| /SHIFT  /       \BCKSP \  | RAISE| SHIFT|  GUI |  TAB |
@@ -338,21 +338,21 @@
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | ESC  |   U  |   W  |   I  |   O  |   P  |                    |  DEL |L.SEL |  UP  | R.SEL| PGUP |  -   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | TAB  |   A  |   S  |   D  |   H  |   j  |-------.    ,-------|  END | LEFT | DOWN | RIGHT| PGDN |  '@  |
- * |------+------+------+------+------+------|  TO 0 |    | TO 7  |------+------+------+------+------+------|
- * |SPACE |   K  |   L  |   N  |   ,  |   .  |-------|    |-------| HOME |  TAB |   ,  |   .  |   /  | 	 "  |
+ * | TAB  |   A  |   S  |   D  |   H  |   J  |-------.    ,-------|  END | LEFT | DOWN | RIGHT| PGDN |  "   |
+ * |------+------+------+------+------+------| BASE  |    |PLATFRM|------+------+------+------+------+------|
+ * |SPACE |   K  |   L  |   N  |   ,  |   .  |-------|    |-------| HOME |  TAB |   ,  |   .  |   /  | ENTER|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            |   /  | ALT  | CTRL | LOWER| /SHIFT  /       \BCKSP \  | LOWER| ENTER|  GUI |      |
+ *            |   /  | ALT  | CTRL | LOWER| /SHIFT  /       \BCKSP \  | LOWER| SHIFT|  GUI |   TAB|
  *            |      |      |      |    MO|/       /         \      \ |    MO|      |      |      |
  *             `----------------------------------'           '------''---------------------------'
  */
             display-name = "GEXTRAS";
             bindings = <
- &kp LBRC &kp N6 &kp N7 &kp N8 &kp N9 &kp N0                        &trans &trans &trans &trans &trans &trans
- &kp ESC &kp U  &trans &kp I  &kp O &kp P                          &trans &trans &trans &trans &trans &trans
- &kp TAB &trans &trans &trans &kp H &kp J                          &trans &trans &trans &trans &trans &trans
- &kp SPACE &kp K &kp L &kp N &kp COMMA &kp DOT &to BASE  &to PLATF  &trans &trans &trans &trans &trans &trans
-               &trans &trans &trans &trans &trans        &trans &trans &trans &trans &trans
+ &kp LBRC &kp N6 &kp N7 &kp N8 &kp N9    &kp N0                       &kp TAB &kp C_PREV &mt C_MUTE C_PP &kp C_NEXT     &kp EQUAL &kp NUHS
+  &kp ESC &kp U  &trans &kp I  &kp O     &kp P                        &kp DEL &kp LS(LC(LEFT)) &kp UP &kp LS(LC(RIGHT)) &kp PG_UP &kp MINUS
+  &kp TAB &trans &trans &trans &kp H     &kp J                        &kp END  &kp LEFT        &kp DOWN  &kp RIGHT      &kp PG_DN &kp LS(N2)
+&kp SPACE &kp K  &kp L  &kp N  &kp COMMA &kp DOT &to BASE   &to PLATF &kp HOME &kp TAB         &kp COMMA &kp DOT        &kp FSLH  &kp RET
+               &trans &trans &trans &trans &trans                 &trans &trans &trans &trans &trans
             >;
             sensor-bindings = <
                 &inc_dec_kp C_VOL_UP C_VOL_DN 
@@ -367,21 +367,21 @@
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | ESC  |   Q  |   W  |   E  |   R  |   T  |                    | ESC  |   U  |  UP  |   O  |   P  |  - _ |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | TAB  |   A  |   S  |   D  |   F  |   G  |-------.    ,-------| TAB  | LEFT | DOWN | RIGHT|   ;  |  '@  |
- * |------+------+------+------+------+------|  VOL+ |    | TG 0  |------+------+------+------+------+------|
- * |SPACE |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  | VOL- |
+ * | TAB  |   A  |   S  |   D  |   F  |   G  |-------.    ,-------| TAB  | LEFT | DOWN | RIGHT|   ;  | BCKSP|
+ * |------+------+------+------+------+------|PP_MUTE|    | BASE  |------+------+------+------+------+------|
+ * |SPACE |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   ,  |   .  |   /  | ENTER|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            |   ]  | GUI  |  ALT | CTRL | /SPACE  /       \SPACE \  |SHIFT | ENTER| BCKSP|   #  |
+ *            |   ]  | GUI  |  ALT | CTRL | /SPACE  /       \SPACE \  |SHIFT | SHIFT| LGUI | BASE |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *             `----------------------------------'           '------''---------------------------'
  */
             display-name = "PLATFORM";
             bindings = <
- &mt LGUI RBRC &trans &trans &trans &trans &trans               &trans &trans &trans &trans &trans &trans
- &trans &trans &trans &trans &trans &trans                      &trans &trans &trans &trans &trans &trans
- &trans &trans &trans &trans &trans &trans                      &trans &trans &trans &trans &trans &trans
- &kp SPACE &trans &trans &trans &trans &trans &kp C_PP &to BASE &trans &trans &trans &trans &trans &trans
-    &kp RBRC &kp LGUI &kp LALT &kp LCTRL &kp SPACE    &kp SPACE &kp LSHFT &kp RET &kp BSPC &kp BSLH
+ &mt LGUI RBRC &kp N1 &kp N2 &kp N3 &kp N4 &kp N5                  &kp N6  &kp N7   &kp N8   &kp N9    &kp N0   &to GAME
+  &kp ESC &kp Q &kp W &kp E &kp R &kp T                            &kp ESC &kp U    &kp UP   &kp O     &kp P    &kp MINUS
+  &kp TAB &kp A &kp S &kp D &kp F &kp G                            &kp TAB &kp LEFT &kp DOWN &kp RIGHT &kp SEMI &kp BSPC
+&kp SPACE &kp Z &kp X &kp C &kp V &kp B &mt C_MUTE C_PP   &to BASE &kp N   &kp M    &kp COMMA &kp DOT  &kp FSLH &kp RET
+   &kp RBRC &kp LGUI &kp LALT &kp LCTRL &kp SPACE            &kp SPACE &kp LSHFT &kp LSHFT &kp LGUI &to BASE
             >;
             sensor-bindings = <
                 &inc_dec_kp C_VOL_UP C_VOL_DN 
