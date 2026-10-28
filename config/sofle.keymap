@@ -126,7 +126,7 @@
 
         
         // New Em Dash macro configured safely for Windows -- call it lowercase &m_dash - only the label is called uppercase
-        emdash: em_dash {
+        m_dsh: em_dash {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             label = "M_DSH";
@@ -140,7 +140,7 @@
 
         
         // New En Dash macro configured safely for Windows
-        emdash: en_dash {
+        n_dsh: en_dash {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             label = "N_DSH";
