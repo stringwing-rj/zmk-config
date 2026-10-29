@@ -204,7 +204,7 @@
                 <&macro_press>, <&kp LSHFT>,
                 <&macro_tap>, <&kp N2 &kp N2>,
                 <&macro_release>, <&kp LSHFT>,
-                <macro_press>, <&kp LEFT>;
+                <&macro_press>, <&kp LEFT>;
         };
 
 
