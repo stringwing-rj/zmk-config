@@ -185,7 +185,7 @@
             bindings = <&macro_tap &kp LS(LBKT) &kp LS(RBKT) &kp LEFT>;
         };
 
-         m_LGT: macro_chevron_angle_brackets {
+         m_lgt: macro_chevron_angle_brackets {
             label = "M_LGT";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
