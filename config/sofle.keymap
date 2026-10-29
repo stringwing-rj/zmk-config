@@ -203,7 +203,7 @@
             bindings = 
                 <&macro_press>, <&kp LSHFT>,
                 <&macro_tap>, <&kp N2 &kp N2>,
-                <&macro_release>, <&kp LSHFT>
+                <&macro_release>, <&kp LSHFT>,
                 <macro_press>, <&kp LEFT>;
         };
 
@@ -267,11 +267,11 @@
             display-name = "lower";
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * | GUI  |      |   ?  |   %  |  £   |  {_} |                    | NUMLK| L.SEL|   %  |R.SEL |  BASE| LOWER|
- * |      |      |      |      |   $  |      |                    |      |      |      |      |      |      |
+ * | GUI  |  –   |   ?  |   %  |  £   |  {_} |                    | NUMLK| L.SEL|   %  |R.SEL |  BASE| LOWER|
+ * |      | n_dsh|      |      |   $  |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | ALT  |      |   ^  |  &   |   #  |  [_] |                    |DELETE|   7  |  8   |  9   |   +  |  -  _|
- * |      |      |      |   ?  |      |      |                    |      | HOME |  Up  | P UP |      |   £  |
+ * | ALT  |  —   |   ^  |  &   |   #  |  [_] |                    |DELETE|   7  |  8   |  9   |   +  |  -  _|
+ * |      | m_dsh|      |   ?  |      |      |                    |      | HOME |  Up  | P UP |      |   £  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | TAB  | CAPS |  <   |  >   |   *  |  (_) |-------.    ,-------|  .   |   4  |  5   |  6   |  "_" |  ' @ |
  * |      | WORD |      |      |      |      |PP MUTE|    | MOUSE |    = | Left |      | Right|      |      |
@@ -303,10 +303,10 @@
  * | GUI  |      | NEXT |PL/USE | PREV | MOUSE|                    | CAPS | NEXT |PL/USE| PREV | MOUSE|ADJUST|
  * |      |      |FORWRD|  MUTE |REWIND|    mo|                    |      |FORWRD| MUTE |REWIND|    to|    to|
  * |------+------+------+-------+------+------|                    |------+------+------+------+------+------|
- * | ALT  |      |   –  |SHIFT  |SHIFT |  GUI |                    |DELETE|L.SEL |   ^  |R.SEL | P UP |  F2  |
+ * | ALT  |      |   —  |SHIFT  |SHIFT |  GUI |                    |DELETE|L.SEL |   ^  |R.SEL | P UP |  F2  |
  * |      |      |      |CTL ALT| CTRL |      |                    |      |      |      |      |      |      |
  * |------+------+------+-------+------+------|                    |------+------+------+------+------+------|
- * | TAB  | CAPS |  ALT |  CTRL | SHIFT| ALT  |-------.    ,-------|  END |  <-  |   v  |  ->  |   @  |   "  |
+ * | TAB  | CAPS |  ALT |  CTRL | SHIFT| ALT  |-------.    ,-------|  END |  <-  |   v  |  ->  |   "  |   @  |
  * |------+------+------+-------+------+------|PP MUTE|    | GAME  |------+------+------+------+------+------|
  * |      |      |      |       |      |      |Win-Snap| |TAB-LA/LC|      |      | WIN  |      |      |      |
  * | CTRL | UNDO | CUT  | COPY  |PASTE |SELECT|-------|    |-------| HOME | Menu |PASTE+| PRSCN|P DOWN| ENTER|
@@ -318,7 +318,7 @@
             bindings = <
             &trans &trans &mt C_RW C_PREV &mt C_MUTE C_PP &mt C_FF C_NEXT &mo MOUSE           &kp CAPS &mt C_RW C_PREV  &mt C_MUTE C_PP &mt C_FF C_NEXT &to MOUSE &to ADJUST
                 &trans &kp CAPS &m_dsh &sk LS(LC(LALT)) &sk LS(LCTRL) &sk LGUI           &kp DEL &kp LS(LC(LEFT))  &kp UP &kp LS(LC(RIGHT))     &kp PG_UP &kp F2
-                &trans &kp CAPS &sk LALT &sk LCTRL &sk LSHFT &sk LALT                      &kp END  &kp LEFT         &kp DOWN  &kp RIGHT          &kp LS(SQT) &kp LS(N2)
+                &trans &kp CAPS &sk LALT &sk LCTRL &sk LSHFT &sk LALT                      &kp END  &kp LEFT         &kp DOWN  &kp RIGHT          &kp LS(N2) &kp LS(SQT)
                 &trans &kp LC(Z) &kp LC(X) &kp LC(C) &kp LC(V) &kp LC(A)  &trans   &to GAME  &kp HOME &kp C_MENU       &kp LG(V) &kp PSCRN          &kp PG_DN &trans
                                          &trans  &trans  &trans  &trans  &trans             &trans  &trans  &trans  &tog MOUSE  &trans
             >;
