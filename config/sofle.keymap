@@ -284,7 +284,7 @@
  *            `----------------------------------'           '------''---------------------------'
  */
             bindings = <
-                &trans &n_dsh CAPS &kp QMARK &kp PRCNT &mt DLLR POUND  &m_brc             &kp KP_NUM    &kp LS(LC(LEFT)) &kp PRCNT &kp LS(LC(RIGHT))  &to BASE &mt LS(N2) COMMA
+                &trans &n_dsh &kp QMARK &kp PRCNT &mt DLLR POUND  &m_brc             &kp KP_NUM    &kp LS(LC(LEFT)) &kp PRCNT &kp LS(LC(RIGHT))  &to BASE &mt LS(N2) COMMA
                 &trans &m_dsh &kp CARET &mt QMARK AMPS  &kp NUHS  &m_bkt                  &kp DEL       &kp KP_N7 &kp KP_N8 &kp KP_N9   &kp KP_PLUS   &mt POUND KP_MINUS
                 &trans &caps_word   &kp LT    &kp GT   &kp STAR  &m_par                   &mt EQUAL DOT &kp KP_N4 &kp KP_N5 &kp KP_N6   &m_quo    &trans
                 &trans &kp LS(NUBS) &kp GRAVE &kp EXCL &kp EQUAL &m_lgt &trans     &trans &kp KP_N0     &kp KP_N1 &kp KP_N2 &kp KP_N3   &mt KP_ASTERISK KP_SLASH &trans
@@ -300,11 +300,11 @@
             display-name = "raise";
 /* RAISE
  * ,-----------------------------------------.                     ,-----------------------------------------.
- * | GUI  |      | NEXT |PL/USE | PREV | MOUSE|                    | CAPS | NEXT |PL/USE| PREV | MOUSE|ADJUST|
- * |      |      |FORWRD|  MUTE |REWIND|    mo|                    |      |FORWRD| MUTE |REWIND|    to|    to|
+ * | GUI  |  –   | NEXT |PL/USE | PREV | MOUSE|                    | CAPS | NEXT |PL/USE| PREV | MOUSE|ADJUST|
+ * |      |n_dash|FORWRD|  MUTE |REWIND|    mo|                    |      |FORWRD| MUTE |REWIND|    to|    to|
  * |------+------+------+-------+------+------|                    |------+------+------+------+------+------|
- * | ALT  |      |   —  |SHIFT  |SHIFT |  GUI |                    |DELETE|L.SEL |   ^  |R.SEL | P UP |  F2  |
- * |      |      |      |CTL ALT| CTRL |      |                    |      |      |      |      |      |      |
+ * | ALT  |  —   |  ?   |SHIFT  |SHIFT |  GUI |                    |DELETE|L.SEL |   ^  |R.SEL | P UP |  F2  |
+ * |      |m_dash|      |CTL ALT| CTRL |      |                    |      |      |      |      |      |      |
  * |------+------+------+-------+------+------|                    |------+------+------+------+------+------|
  * | TAB  | CAPS |  ALT |  CTRL | SHIFT| ALT  |-------.    ,-------|  END |  <-  |   v  |  ->  |   "  |   @  |
  * |------+------+------+-------+------+------|PP MUTE|    | GAME  |------+------+------+------+------+------|
@@ -316,10 +316,10 @@
  *            `------------------------------------'           '------''---------------------------'
  */
             bindings = <
-            &trans &trans &mt C_RW C_PREV &mt C_MUTE C_PP &mt C_FF C_NEXT &mo MOUSE           &kp CAPS &mt C_RW C_PREV  &mt C_MUTE C_PP &mt C_FF C_NEXT &to MOUSE &to ADJUST
-                &trans &kp CAPS &m_dsh &sk LS(LC(LALT)) &sk LS(LCTRL) &sk LGUI           &kp DEL &kp LS(LC(LEFT))  &kp UP &kp LS(LC(RIGHT))     &kp PG_UP &kp F2
-                &trans &kp CAPS &sk LALT &sk LCTRL &sk LSHFT &sk LALT                      &kp END  &kp LEFT         &kp DOWN  &kp RIGHT          &kp LS(N2) &kp LS(SQT)
-                &trans &kp LC(Z) &kp LC(X) &kp LC(C) &kp LC(V) &kp LC(A)  &trans   &to GAME  &kp HOME &kp C_MENU       &kp LG(V) &kp PSCRN          &kp PG_DN &trans
+      &trans &n_dsh &mt C_RW C_PREV &mt C_MUTE C_PP &mt C_FF C_NEXT &mo MOUSE          &kp CAPS &mt C_RW C_PREV  &mt C_MUTE C_PP &mt C_FF C_NEXT &to MOUSE &to ADJUST
+             &trans &m_dsh &kp QMARK &sk LS(LC(LALT)) &sk LS(LCTRL) &sk LGUI           &kp DEL &kp LS(LC(LEFT))  &kp UP &kp LS(LC(RIGHT))     &kp PG_UP &kp F2
+                &trans &kp CAPS &sk LALT &sk LCTRL &sk LSHFT &sk LALT                 &kp END  &kp LEFT         &kp DOWN  &kp RIGHT          &kp LS(N2) &kp LS(SQT)
+          &trans &kp LC(Z) &kp LC(X) &kp LC(C) &kp LC(V) &kp LC(A)  &trans  &to GAME  &kp HOME &kp C_MENU       &kp LG(V) &kp PSCRN          &kp PG_DN &trans
                                          &trans  &trans  &trans  &trans  &trans             &trans  &trans  &trans  &tog MOUSE  &trans
             >;
             sensor-bindings = <
@@ -364,12 +364,11 @@
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * | GUI |Pwr_off|BT_PRV| BT 0 |BT_NXT|B_CLR |                    |BDIS 0| MWl.L|      |MWl.R |      | GAME |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | ESC  |      |      |      |      |      |                    |DELETE|  M 1 | M Up |  M 2 |SEARCH| BASE |
+ * | ESC  |      |      |      |      |      |                    |DELETE|  M 1 | M Up |  M 2 |SEARCH|PLATFM|
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | TAB  |      |      |      |      |      |-------.    ,-------|WheelU|M Left|M Down|M Rigt|  M 3 | MOUSE|
- * |      |      |      |      |      |      |                    |      |      |      |      |      |   tog|
+ * | TAB  |      |      |      |      |      |-------.    ,-------|WheelU|M Left|M Down|M Rigt|  M 3 | BASE |
  * |------+------+------+------+------+------|PP MUTE|    |PLATFRM|------+------+------+------+------+------|
- * | ALT  |      |      |      |      |      |-------|    |-------|WheelD|BR_Bck|B_Fwd |Refrsh|      | ENTER|
+ * | ALT  |      |      |      |      |      |-------|    |-------|WheelD|BR_Bck|      |B_Fwd |Refrsh| ENTER|
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            |  ALT | CTRL |SHIFT |      | /SPACE  /       \BCKSP \  |      | SHIFT| MOUSE| MOUSE|
  *            |      |      |      |      |/       /         \      \ |      |      |    TG|    TG|
@@ -380,7 +379,7 @@
  &kp LGUI &ext_power EP_TOG &bt BT_PRV &bt BT_SEL 0 &bt BT_NXT &bt BT_CLR        &bt BT_DISC 0  &trans &trans &trans &trans   &to GAME
  &kp ESC  &trans &trans &sk LC(LALT) &sk LS(LALT) &trans                         &kp DEL &trans &trans &trans &trans          &to PLATF
  &kp TAB  &sk LGUI  &sk LALT &sk LCTRL &sk LSHFT &sk LALT                        &trans  &trans &trans &trans &trans          &to BASE
- &kp LALT &trans   &trans &trans  &trans &trans &mt C_MUTE C_PP        &to PLATF &trans  &trans &trans &trans &trans         &kp RET
+ &kp LALT &trans   &trans &trans  &trans &trans &mt C_MUTE C_PP        &to PLATF &trans  &trans &trans &trans &trans          &kp RET
                &kp LALT &kp LCTRL &kp LSHFT &none &kp SPACE                      &kp BSPC &none &sk LSHFT &trans &trans
             >;
             sensor-bindings = <
