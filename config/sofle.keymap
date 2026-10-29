@@ -152,6 +152,51 @@
                 <&macro_release>, <&kp LALT>;
     };
 
+         m_par: macro_parenthesis {
+            label = "M_PAR";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <30>;
+            wait-ms = <10>;
+            bindings = <&macro_tap &kp LPAR &kp RPAR &kp LEFT>;
+        };
+
+         m_bkt: macro_brackets {
+            label = "M_BKT";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <30>;
+            wait-ms = <10>;
+            bindings = <&macro_tap &kp LBKT &kp RBKT &kp LEFT>;
+        };
+
+         m_brc: macro_braces {
+            label = "M_BRC";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <30>;
+            wait-ms = <10>;
+            bindings = <&macro_tap &kp LS(LBKT) &kp LS(RBKT) &kp LEFT>;
+        };
+
+         m_LGT: macro_chevron_angle_brackets {
+            label = "M_LGT";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <30>;
+            wait-ms = <10>;
+            bindings = <&macro_tap &kp LT &kp GT &kp LEFT>;
+        };
+
+         m_quo: macro_s_quotes {
+            label = "M_QUO";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            tap-ms = <30>;
+            wait-ms = <10>;
+            bindings = <&macro_tap &kp SQT &kp SQT &kp LEFT>;
+        };
+
 
 
     };
@@ -212,28 +257,28 @@
             display-name = "lower";
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * | GUI  | CAPS |   ?  |   %  |  £   |  {   |                    | NUMLK| L.SEL|   %  |R.SEL |  BASE| LOWER|
- * |      |      |      |      |   $  |   }  |                    |      |      |      |      |      |      |
+ * | GUI  | CAPS |   ?  |   %  |  £   |  {_} |                    | NUMLK| L.SEL|   %  |R.SEL |  BASE| LOWER|
+ * |      |      |      |      |   $  |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | ALT  |   "  |   ^  |  &   |   #  |  [   |                    |DELETE|   7  |  8   |  9   |   +  |  -  _|
- * |      |      |      |   ?  |      |   ]  |                    |      | HOME |  Up  | P UP |      |   £  |
+ * | ALT  |  <_> |   ^  |  &   |   #  |  [_] |                    |DELETE|   7  |  8   |  9   |   +  |  -  _|
+ * |      |      |      |   ?  |      |      |                    |      | HOME |  Up  | P UP |      |   £  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | TAB  | CAPS |  <   |  >   |   *  |  (   |-------.    ,-------|  .   |   4  |  5   |  6   |   "  |  ' @ |
- * |      | WORD |   >  |      |      |   )  |PP MUTE|    | MOUSE |    = | Left |      | Right| MACRO|      |
+ * | TAB  | CAPS |  <   |  >   |   *  |  (_) |-------.    ,-------|  .   |   4  |  5   |  6   |   "  |  ' @ |
+ * |      | WORD |      |      |      |      |PP MUTE|    | MOUSE |    = | Left |      | Right| MACRO|      |
  * |------+------+------+------+------+------|MW-SCRL|    |   TOG |------+------+------+------+------+------|
- * |LCTR  |   |  |  `   |  !   |   =  |  <"  |-------|    |-------|  0   |   1  |  2   |  3   |  /   | ENTER|
- * |      |      |      |      |      |   >" |                    |INSERT| END  | Down |P DOWN|   *  |      |
+ * |LCTR  |   |  |  `   |  !   |   =  |  "_" |-------|    |-------|  0   |   1  |  2   |  3   |  /   | ENTER|
+ * |      |      |      |      |      |      |                    |INSERT| END  | Down |P DOWN|   *  |      |
  * `-----------------------------------------/       /    \      \------------------------------------------'
  *            | ALT  | CTRL |SHIFT |LOWER | /SPACE  /      \BCKSP \  |      | SHIFT|   TO | MOUSE|
  *            |  sk  |  sk  |  sk  |     |/       /         \      \ |      |      | BASE |   TOG|
  *            `----------------------------------'           '------''---------------------------'
  */
             bindings = <
-                &trans &kp CAPS  &kp QMARK &kp PRCNT &mt DLLR POUND &mt LS(RBKT) LS(LBKT)      &kp KP_NUM    &kp LS(LC(LEFT)) &kp PRCNT &kp LS(LC(RIGHT))         &to BASE &mt LS(N2) COMMA
-                &trans &kp LS(N2) &kp CARET &mt QMARK AMPS &kp NUHS &mt RBKT LBKT              &kp DEL       &kp KP_N7 &kp KP_N8 &kp KP_N9   &kp KP_PLUS          &mt POUND KP_MINUS
-                &trans &caps_word &kp LT  &kp GT  &kp STAR  &mt RPAR LPAR                      &mt EQUAL DOT &kp KP_N4 &kp KP_N5 &kp KP_N6   &kp LS(N2)           &trans
-                &trans &kp LS(NUBS) &kp GRAVE &kp EXCL &kp EQUAL &mt GT LT   &trans     &trans &kp KP_N0     &kp KP_N1 &kp KP_N2 &kp KP_N3   &mt KP_ASTERISK KP_SLASH &trans
-                           &trans    &trans      &trans    &trans   &trans            &trans  &trans    &trans   &trans &tog MOUSE
+            &trans &kp CAPS  &kp QMARK &kp PRCNT &mt DLLR POUND  &m_brc                   &kp KP_NUM    &kp LS(LC(LEFT)) &kp PRCNT &kp LS(LC(RIGHT))         &to BASE &mt LS(N2) COMMA
+            &trans &kp LS(N2) &kp CARET &mt QMARK AMPS &kp NUHS  &m_bkt                   &kp DEL       &kp KP_N7 &kp KP_N8 &kp KP_N9   &kp KP_PLUS          &mt POUND KP_MINUS
+                &trans &caps_word   &kp LT    &kp GT   &kp STAR  &m_par                   &mt EQUAL DOT &kp KP_N4 &kp KP_N5 &kp KP_N6   &kp LS(N2)           &trans
+                &trans &kp LS(NUBS) &kp GRAVE &kp EXCL &kp EQUAL &m_quo &trans     &trans &kp KP_N0     &kp KP_N1 &kp KP_N2 &kp KP_N3   &mt KP_ASTERISK KP_SLASH &trans
+                           &trans    &trans      &trans    &trans   &trans                &trans  &trans    &trans   &trans &tog MOUSE
             >;
             sensor-bindings = <
                 &inc_dec_kp UP DOWN
@@ -248,12 +293,12 @@
  * | GUI  |      | NEXT |PL/USE | PREV | MOUSE|                    | CAPS | NEXT |PL/USE| PREV | MOUSE|ADJUST|
  * |      |      |FORWRD|  MUTE |REWIND|    mo|                    |      |FORWRD| MUTE |REWIND|    to|    to|
  * |------+------+------+-------+------+------|                    |------+------+------+------+------+------|
- * | ALT  | CAPS |   @  |SHIFT  |SHIFT |  GUI |                    |DELETE|L.SEL |   ^  |R.SEL | P UP |  F2  |
+ * | ALT  | CAPS |   –  |SHIFT  |SHIFT |  GUI |                    |DELETE|L.SEL |   ^  |R.SEL | P UP |  F2  |
  * |      |      |      |CTL ALT| CTRL |      |                    |      |      |      |      |      |      |
  * |------+------+------+-------+------+------|                    |------+------+------+------+------+------|
- * | TAB  |CP_WRD|  ALT |  CTRL | SHIFT| ALT  |-------.    ,-------|  END |  <-  |   v  |  ->  | ' @  |   "  |
+ * | TAB  |CP_WRD|  ALT |  CTRL | SHIFT| ALT  |-------.    ,-------|  END |  <-  |   v  |  ->  |   @  |   "  |
  * |------+------+------+-------+------+------|PP MUTE|    | GAME  |------+------+------+------+------+------|
- * |      |      |      |       |      |      |Win-Snap| |TAB-LA/LC|      |      |      |      |      |      |
+ * |      |      |      |       |      |      |Win-Snap| |TAB-LA/LC|      |      | WIN  |      |      |      |
  * | CTRL | UNDO | CUT  | COPY  |PASTE |SELECT|-------|    |-------| HOME | Menu |PASTE+| PRSCN|P DOWN| ENTER|
  * `------------------------------------------/       /     \      \-----------------------------------------'
  *            | ALT  | CTRL |SHIFT |LOWER  | /SPACE  /       \BCKSP \  |RAISE | ENTER| MOUSE| BASE |
@@ -262,8 +307,8 @@
  */
             bindings = <
             &trans &trans &mt C_RW C_PREV &mt C_MUTE C_PP &mt C_FF C_NEXT &mo MOUSE           &kp CAPS &mt C_RW C_PREV  &mt C_MUTE C_PP &mt C_FF C_NEXT &to MOUSE &to ADJUST
-                &trans &kp CAPS &kp LS(SQT) &sk LS(LC(LALT)) &sk LS(LCTRL) &sk LGUI           &kp DEL &kp LS(LC(LEFT))  &kp UP &kp LS(LC(RIGHT))     &kp PG_UP &kp F2
-                &trans  &caps_word &sk LALT &sk LCTRL &sk LSHFT &sk LALT                      &kp END  &kp LEFT         &kp DOWN  &kp RIGHT          &kp SQT   &kp LS(N2)
+                &trans &kp CAPS &m_dsh &sk LS(LC(LALT)) &sk LS(LCTRL) &sk LGUI           &kp DEL &kp LS(LC(LEFT))  &kp UP &kp LS(LC(RIGHT))     &kp PG_UP &kp F2
+                &trans  &caps_word &sk LALT &sk LCTRL &sk LSHFT &sk LALT                      &kp END  &kp LEFT         &kp DOWN  &kp RIGHT          &kp LS(SQT) &kp LS(N2)
                 &trans  &kp LC(Z) &kp LC(X) &kp LC(C) &kp LC(V) &kp LC(A)  &trans   &to GAME  &kp HOME &kp C_MENU       &kp LG(V) &kp PSCRN          &kp PG_DN &trans
                                          &trans  &trans  &trans  &trans  &trans             &trans  &trans  &trans  &tog MOUSE  &trans
             >;
@@ -278,11 +323,11 @@
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * | GUI  |      |      |      |   {  |  }   |                    | F13  |  F14 |  F15 |  F16 |  F17 | GAME |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | ESC  |      |   –  |   ?  |   [  |  ]   |                    | F12  | 	F7  |  F8  |  F9  |	 F18 | BASE |
+ * | ESC  |      |   —  |   ?  |   [  |  ]   |                    | F12  | 	F7  |  F8  |  F9  |	 F18 | BASE |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | TAB  |  "   |   <  |  >   |   (  |  )   |-------.    ,-------| F11  |  F4  |  F5  |  F6  |  F19 | NUMLK|
  * |------+------+------+------+------+------|MIPS OFF|  |MIPS OFF|------+------+------+------+------+------|
- * |      |  \   |   ~  |   —  |   <  |  >   |-------|    |-------| F10  |  F1  |  F2  |  F3  |	 F20 |   "  |
+ * |      |  \   |   ~  |   –  |   <  |  >   |-------|    |-------| F10  |  F1  |  F2  |  F3  |	 F20 |   "  |
  * |      |   ~  |      |      |      |      |                    |      |      |      |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            | ALT  | CTRL |SHIFT |LOWER | /SPACE  /       \BCKSP \  |      | ENTER| MOUSE| MOUSE|
@@ -292,9 +337,9 @@
             display-name = "adjust";
             bindings = <
             &trans &none &none &none   &kp LS(LBKT) &kp LS(RBKT)                             &kp F13 &kp F14 &kp F15 &kp F16 &kp F17  &to GAME
-            &kp ESC &none  &n_dsh  &kp QMARK &kp LBKT &kp RBKT                               &kp F12 &kp F7 &kp F8 &kp F9 &kp F18     &to PLATF
+            &kp ESC &none  &m_dsh  &kp QMARK &kp LBKT &kp RBKT                               &kp F12 &kp F7 &kp F8 &kp F9 &kp F18     &to PLATF
             &trans &kp LS(N2) &kp LT &kp GT   &kp LPAR &kp RPAR                              &kp F11 &kp F4 &kp F5 &kp F6 &kp F19     &to BASE
-&trans &mt TILDE2 NUBS &kp TILDE2 &m_dsh &kp LT  &kp GT &rgb_ug RGB_TOG      &rgb_ug RGB_TOG &kp F10 &kp F1 &kp F2 &kp F3 &kp F20     &kp LS(N2)
+&trans &mt TILDE2 NUBS &kp TILDE2 &n_dsh &kp LT  &kp GT &rgb_ug RGB_TOG      &rgb_ug RGB_TOG &kp F10 &kp F1 &kp F2 &kp F3 &kp F20     &kp LS(N2)
                          &trans &trans  &trans &trans  &trans                                  &trans  &trans &trans &to MOUSE &to MOUSE
             >;
             sensor-bindings = <
