@@ -15,8 +15,13 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/ext_power.h>
-#include <dt-bindings/zmk/pointing.h>
 
+/* Define default pointing values before including pointing.h to prevent macro redefinition warnings */
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1000  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 20  // default: 10
+
+#include <dt-bindings/zmk/pointing.h>
+#include <input/processors.dtsi>
 
 
 
@@ -43,9 +48,6 @@
 
 
 
-
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1000  // default: 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
 
 &mmv {
     time-to-max-speed-ms = <120>;
