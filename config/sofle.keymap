@@ -15,12 +15,12 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/pointing.h>
 
 // #define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
 // #define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
 
-#include <dt-bindings/zmk/pointing.h>
-
+d
 
 #define BASE 0
 #define LOWER 1
@@ -362,13 +362,14 @@
  /*
  * Mouse & Media
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * | GUI |Pwr_off|BT_PRV| BT 0 |BT_NXT|B_CLR |                    |BDIS 0| MWl.L|      |MWl.R |      | GAME |
+ * | GUI |Pwr_off|BT_PRV| BT 0 |BT_NXT|B_CLR |                    |BDIS 0| MWl.L|PLA/SE|MWl.R |      | GAME |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | ESC  |      |      |      |      |      |                    |DELETE|  M 1 | M Up |  M 2 |SEARCH|PLATFM|
+ * | ESC  |      |      |      |      |      |                    |DELETE| LCLK | M Up | RCLK |Search|PLATFM|
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | TAB  |      |      |      |      |      |-------.    ,-------|WheelU|M Left|M Down|M Rigt|  M 3 | BASE |
+ * | TAB  |      |      |      |      |      |-------.    ,-------|WheelU|M Left|M Down|M Rigt|Middle| BASE |
  * |------+------+------+------+------+------|PP MUTE|    |PLATFRM|------+------+------+------+------+------|
- * | ALT  |      |      |      |      |      |-------|    |-------|WheelD|BR_Bck|      |B_Fwd |Refrsh| ENTER|
+ * | ALT  |      |      |      |      |      |-------|    |-------|WheelD|  MB4 |      | MB5  |Reload| ENTER|
+ * |      |      |      |      |      |      |                    |      |Br_Bck|      |Br_Fwd|      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            |  ALT | CTRL |SHIFT |      | /SPACE  /       \BCKSP \  |      | SHIFT| MOUSE| MOUSE|
  *            |      |      |      |      |/       /         \      \ |      |      |    TG|    TG|
@@ -376,11 +377,11 @@
  */
             display-name = "MOUSE";
             bindings = <
- &kp LGUI &ext_power EP_TOG &bt BT_PRV &bt BT_SEL 0 &bt BT_NXT &bt BT_CLR        &bt BT_DISC 0  &trans &trans &trans &trans   &to GAME
- &kp ESC  &trans &trans &sk LC(LALT) &sk LS(LALT) &trans                         &kp DEL &trans &trans &trans &trans          &to PLATF
- &kp TAB  &sk LGUI  &sk LALT &sk LCTRL &sk LSHFT &sk LALT                        &trans  &trans &trans &trans &trans          &to BASE
- &kp LALT &trans   &trans &trans  &trans &trans &mt C_MUTE C_PP        &to PLATF &trans  &trans &trans &trans &trans          &kp RET
-               &kp LALT &kp LCTRL &kp LSHFT &none &kp SPACE                      &kp BSPC &none &sk LSHFT &trans &trans
+&kp LGUI &ext_power EP_TOG &bt BT_PRV &bt BT_SEL 0 &bt BT_NXT &bt BT_CLR    &bt BT_DISC 0 &msc SCRL_LEFT &kp C_PP &msc SCRL_RIGHT &trans   &to GAME
+ &kp ESC  &trans &trans &sk LC(LALT) &sk LS(LALT) &trans                    &kp DEL &mkp LCLK &mmv MOVE_UP &mkp RCLK &kp LC(K) &to PLATF
+ &kp TAB  &sk LGUI  &sk LALT &sk LCTRL &sk LSHFT &sk LALT                   &msc SCRL_UP &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mkp MCLK &to BASE
+ &kp LALT &trans &trans &trans  &trans &trans &mt C_MUTE C_PP     &to PLATF &msc SCRL_DOWN &mkp MB4 &trans &mkp MB5 &kp LC(R) &kp RET
+               &kp LALT &kp LCTRL &kp LSHFT &none &kp SPACE               &kp BSPC &none &sk LSHFT &trans &trans
             >;
             sensor-bindings = <
                 &inc_dec_kp C_VOL_UP C_VOL_DN 
