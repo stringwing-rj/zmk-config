@@ -17,8 +17,8 @@
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/pointing.h>
 
-// #define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
-// #define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 40    // default: 10
 
 
 
@@ -438,7 +438,7 @@
  &kp LBRC &kp N6 &kp N7 &kp N8 &kp N9    &kp N0                       &kp TAB &kp C_PREV &mt C_MUTE C_PP &kp C_NEXT     &kp EQUAL &kp NUHS
   &kp ESC &kp U  &trans &kp I  &kp O     &kp P                        &kp DEL &kp LS(LC(LEFT)) &kp UP &kp LS(LC(RIGHT)) &kp PG_UP &kp MINUS
   &kp TAB &trans &trans &trans &kp H     &kp J                        &kp END  &kp LEFT        &kp DOWN  &kp RIGHT      &kp PG_DN &kp LS(N2)
-&kp SPACE &kp K  &kp L  &kp N  &kp COMMA &kp DOT &to BASE   &to PLATF &kp HOME &kp TAB         &kp COMMA &kp DOT        &kp FSLH  &kp RET
+&kp SPACE &kp K  &kp L  &kp N  &kp COMMA &kp DOT &to BASE   &to BASE  &kp HOME &kp TAB         &kp COMMA &kp DOT        &kp FSLH  &kp RET
                &trans &trans &trans &trans &trans                 &trans &trans &trans &trans &trans
             >;
             sensor-bindings = <
