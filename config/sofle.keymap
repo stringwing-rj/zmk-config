@@ -17,8 +17,8 @@
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/pointing.h>
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 40    // default: 10
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1000  // default: 600
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 80    // default: 10
 
 
 
@@ -40,7 +40,15 @@
     cs-gpios = <&pro_micro 4 GPIO_ACTIVE_HIGH>;
 };
 
+&mmv {
+    time-to-max-speed-ms = <120>;
+    acceleration-exponent = <6>;
+};
 
+&msc {
+    time-to-max-speed-ms = <80>;
+    acceleration-exponent = <10>;
+};
 
 / {
     // 1. BEHAVIORS BLOCK
