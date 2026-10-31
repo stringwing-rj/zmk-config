@@ -362,13 +362,13 @@
  /*
  * Mouse & Media
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * | GUI |Pwr_off|BT_PRV| BT 0 |BT_NXT|B_CLR |                    |BDIS 0| MWl.L|PLA/SE|MWl.R |      | GAME |
+ * | GUI |Pwr_off|BT_PRV| BT 0 |BT_NXT|B_CLR |                    |BDIS 0| MWl.L|PLA/SE|MWl.R |Search| GAME |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | ESC  |      |      |      |      |      |                    |DELETE| LCLK | M Up | RCLK |Search|PLATFM|
+ * | ESC  |      |      |      |      |      |                    |DELETE| LCLK | M Up | RCLK |WheelU|PLATFM|
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | TAB  |      |      |      |      |      |-------.    ,-------|WheelU|M Left|M Down|M Rigt|Middle| BASE |
+ * | TAB  |      |      |      |      |      |-------.    ,-------|END   |M Left|M Down|M Rigt|WheelD| BASE |
  * |------+------+------+------+------+------|PP MUTE|    |PLATFRM|------+------+------+------+------+------|
- * | ALT  |      |      |      |      |      |-------|    |-------|WheelD|  MB4 |      | MB5  |Reload| ENTER|
+ * | ALT  |      |      |      |      |      |-------|    |-------|HOME  |  MB4 |Middle| MB5  |Reload| ENTER|
  * |      |      |      |      |      |      |                    |      |Br_Bck|      |Br_Fwd|      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            |  ALT | CTRL |SHIFT |      | /SPACE  /       \BCKSP \  |      | SHIFT| MOUSE| MOUSE|
@@ -377,10 +377,10 @@
  */
             display-name = "MOUSE";
             bindings = <
-&kp LGUI &ext_power EP_TOG &bt BT_PRV &bt BT_SEL 0 &bt BT_NXT &bt BT_CLR    &bt BT_DISC 0 &msc SCRL_LEFT &kp C_PP &msc SCRL_RIGHT &trans   &to GAME
- &kp ESC  &trans &trans &sk LC(LALT) &sk LS(LALT) &trans                    &kp DEL &mkp LCLK &mmv MOVE_UP &mkp RCLK &kp LC(K) &to PLATF
- &kp TAB  &sk LGUI  &sk LALT &sk LCTRL &sk LSHFT &sk LALT                   &msc SCRL_UP &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &mkp MCLK &to BASE
- &kp LALT &trans &trans &trans  &trans &trans &mt C_MUTE C_PP     &to PLATF &msc SCRL_DOWN &mkp MB4 &trans &mkp MB5 &kp LC(R) &kp RET
+&kp LGUI &ext_power EP_TOG &bt BT_PRV &bt BT_SEL 0 &bt BT_NXT &bt BT_CLR   &bt BT_DISC 0 &msc SCRL_LEFT &kp C_PP &msc SCRL_RIGHT  &kp LC(K)      &to GAME
+ &kp ESC  &none &none &sk LC(LALT) &sk LS(LALT) &none                      &kp DEL  &mkp LCLK      &mmv MOVE_UP   &mkp RCLK       &msc SCRL_UP   &to PLATF
+ &kp TAB  &sk LGUI  &sk LALT &sk LCTRL &sk LSHFT &sk LALT                  &kp END  &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &msc SCRL_DOWN &to BASE
+ &kp LALT &none &none &none  &none &none &mt C_MUTE C_PP         &to PLATF &kp HOME &mkp MB4       &mkp MCLK      &mkp MB5        &kp LC(R)      &kp RET
                &kp LALT &kp LCTRL &kp LSHFT &none &kp SPACE               &kp BSPC &none &sk LSHFT &trans &trans
             >;
             sensor-bindings = <
